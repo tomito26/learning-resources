@@ -1,20 +1,22 @@
 <template>
-  <div @click="$emit('close')"></div>
-  <dialog open>
-    <header>
-      <slot name="header">
-        <h2>{{ title }}</h2>
-      </slot>
-    </header>
-    <section>
-      <slot></slot>
-    </section>
-    <menu>
-      <slot name="actions">
-        <base-button @click="$emit('close')">Close</base-button>
-      </slot>
-    </menu>
-  </dialog>
+  <teleport to="body">
+    <div @click="$emit('close')"></div>
+    <dialog open>
+      <header>
+        <slot name="header">
+          <h2>{{ title }}</h2>
+        </slot>
+      </header>
+      <section>
+        <slot></slot>
+      </section>
+      <menu>
+        <slot name="actions">
+          <base-button @click="$emit('close')">Close</base-button>
+        </slot>
+      </menu>
+    </dialog>
+  </teleport>
 </template>
 
 <script>
@@ -26,10 +28,10 @@ export default {
     },
   },
   emits: {
-    'close': function() {
-      return true
-    }
-  }
+    close: function () {
+      return true;
+    },
+  },
 };
 </script>
 
@@ -68,7 +70,6 @@ menu {
   padding: 1rem;
   display: flex;
   justify-content: flex-end;
-  
 }
 @media (min-width: 768) {
   dialog {

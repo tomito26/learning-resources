@@ -65,9 +65,9 @@ export default {
     submitResource() {
       console.log(this.newResource);
       if (
-        this.newResource.title.trim() == "" ||
-        this.newResource.description.trim() == "" ||
-        this.newResource.link.trim() == ""
+        this.newResource.title == "" ||
+        this.newResource.description == "" ||
+        this.newResource.link == ""
       ) {
         return (this.inputIsInvalid = true);
       }
